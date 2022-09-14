@@ -111,3 +111,91 @@ df.loc[0,['-4']] = n4
 
 #print(df)
 ############################################################ task 1 competed
+
+#temp = input("enter the value of mod : ")
+
+
+#max_l = 30000
+
+len = len(df)
+i = 1
+begin = 0
+end = temp
+
+while end<= len:
+    df['Octant_id'][i+1] = str(begin) + "-" + str(end-1)
+    l_1p=0
+    l_1n=0
+    l_2p=0
+    l_2n=0
+    l_3p=0
+    l_3n=0
+    l_4p=0
+    l_4n=0    
+    for j in range(begin,end): 
+        if df['octant'][j]=="+1":
+            l_1p = l_1p +1
+        elif df['octant'][j] == "-1":
+            l_1n = l_1n + 1
+        elif df['octant'][j] == "+2":
+            l_2p = l_2p + 1
+        elif df['octant'][j] == "-2":
+            l_2n = l_2n + 1
+        elif df['octant'][j] == "+3":
+            l_3p = l_3p + 1
+        elif df['octant'][j] == "-3":
+            l_3n = l_3n + 1
+        elif df['octant'][j] == "+4":
+            l_4p = l_4p + 1
+        elif df['octant'][j] == "-4":
+            l_4n = l_4n + 1
+    df.loc[i+1,['+1']] = l_1p
+    df.loc[i+1,['-1']] = l_1n
+    df.loc[i+1,['+2']] = l_2p
+    df.loc[i+1,['-2']] = l_2n
+    df.loc[i+1,['+3']] = l_3p
+    df.loc[i+1,['-3']] = l_3n
+    df.loc[i+1,['+4']] = l_4p
+    df.loc[i+1,['-4']] = l_4n
+    begin = end
+    i=i+1
+    end = temp*i
+
+#print(len)
+
+if end>len:
+    df['Octant_id'][i+1] = str(begin) + "-" + str(len-1)
+    p_1p=0
+    p_1n=0
+    p_2p=0
+    p_2n=0
+    p_3p=0
+    p_3n=0
+    p_4p=0
+    p_4n=0
+    for j in range(begin,len):
+        if df['octant'][j]=="+1":
+            p_1p = p_1p +1
+        elif df['octant'][j] == "-1":
+            p_1n = p_1n + 1
+        elif df['octant'][j] == "+2":
+            p_2p = p_2p + 1
+        elif df['octant'][j] == "-2":
+            p_2n = p_2n + 1
+        elif df['octant'][j] == "+3":
+            p_3p = p_3p + 1
+        elif df['octant'][j] == "-3":
+            p_3n = p_3n + 1
+        elif df['octant'][j] == "+4":
+            p_4p = p_4p + 1
+        elif df['octant'][j] == "-4":
+            p_4n = p_4n + 1     
+    df.loc[i+1,['+1']] = p_1p
+    df.loc[i+1,['-1']] = p_1n
+    df.loc[i+1,['+2']] = p_2p
+    df.loc[i+1,['-2']] = p_2n
+    df.loc[i+1,['+3']] = p_3p
+    df.loc[i+1,['-3']] = p_3n
+    df.loc[i+1,['+4']] = p_4p
+    df.loc[i+1,['-4']] = p_4n   
+     
