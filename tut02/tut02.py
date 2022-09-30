@@ -205,4 +205,176 @@ if end>len:
 
 
     ##################################################### task2 completed
+    ####### task-3 starts here ##############
+
+### calculating overall transition count #####
+
+def trans(first,end,mac):
+    rows, cols = (9,9)
+    arr = [[0 for i in range(cols)] for j in range(rows)]
+    for pop in range(first,end-1) : 
+        arr[int(df["octant"][pop])+4][int(df["octant"][pop+1])+4]=arr[int(df["octant"][pop])+4][int(df["octant"][pop+1])+4]+1
+    z=5    
+    for i in range(8) :
+        if(i%2==0) :
+            df['+1'][i+mac]=arr[z][5]            # count of +1 - +1 is stored in arr[4+1][4+1]   [adding 4 to each index +1,-1,+2,-2,+3,-3,+4,-4]
+        if(i%2!=0) :                             # count of +1 - -1 is stored in arr[4+1][4-1]
+            z=8-z                                # count of +1 - +2 is stored in arr[4+1][2+4]
+            df['+1'][i+mac]=arr[z][5]            # count of +1 - -2 is stored in arr[1+4][-2+4]
+            z=8-z                                # count of +1 - +3 is stored in arr[4+1][3+4]
+            z=z+1                                # count of +1 - -3 is stored in arr[4+1][-3+4]
+    z=5                                          # count of +1 - +4 is stored in arr[4+1][4+4]
+    for i in range(8) :                          # count of +1 - -4 is stored in arr[4+1][-4+4]
+        if(i%2==0) :
+            df['-1'][i+mac]=arr[z][3]
+        if(i%2!=0) :                             # count of +2 - +1 is stored in arr[4+2][1+4]
+            z=8-z                                # count of +2 - -1 is stored in arr[4+2][-1+4]
+            df["-1"][i+mac]=arr[z][3]            # count of +2 - +2 is stored in arr[4+2][2+4]
+            z=8-z                                # count of +2 - -2 is stored in arr[4+2][-2+4]
+            z=z+1                                # count of +2 - +3 is stored in arr[4+2][3+4]
+    z=5                                          # count of +2 - -3 is stored in arr[4+2][-3+4]
+    for i in range(8) :                          # count of +2 - +4 is stored in arr[4+2][4+4]
+        if(i%2==0) :                             # count of +2 - -4 is stored in arr[4+2][-4+4]
+            df["+2"][i+mac]=arr[z][6]
+        if(i%2!=0) :
+            z=8-z
+            df["+2"][i+mac]=arr[z][6]            # count of +3 - +1 is stored in arr[4+3][1+4]
+            z=8-z                                # count of +3 - -1 is stored in arr[4+3][-1+4]
+            z=z+1                                # count of +3 - +2  is stored in arr[4+3][2+4]
+    z=5                                          # count of +3 - -2  is stored in arr[4+3][-2+4]
+    for i in range(8) :                          # count of +3 - +3  is stored in arr[4+3][3+4]
+        if(i%2==0) :                             # count of +3 - -3  is stored in arr[4+3][-3+4]
+            df["-2"][i+mac]=arr[z][2]            # count of +3 - +4  is stored in arr[4+3][4+4]
+        if(i%2!=0) :                             # count of +3 - -4  is stored in arr[4+3][-4+4]
+            z=8-z
+            df["-2"][i+mac]=arr[z][2]
+            z=8-z
+            z=z+1
+
+    z=5                                          # count of +4 - +1  is stored in arr[4+4][1+4]
+    for i in range(8) :                          # count of +4 - -1  is stored in arr[4+4][-1+4]
+        if(i%2==0) :                             # count of +4 - +2  is stored in arr[4+4][2+4]
+            df["+3"][i+mac]=arr[z][7]            # count of +4 - -2  is stored in arr[4+4][-2+4]
+        if(i%2!=0) :                             # count of +4 - +3  is stored in arr[4+4][3+4]
+            z=8-z                                # count of +4 - -3  is stored in arr[4+4][-3+4]
+            df["+3"][i+mac]=arr[z][7]            # count of +4 - +4  is stored in arr[4+4][4+4]
+            z=8-z                                # count of +4 - -4  is stored in arr[4+4][-4+4]
+            z=z+1
+
+    z=5
+    for i in range(8) :
+        if(i%2==0) :
+            df["-3"][i+mac]=arr[z][1]
+        if(i%2!=0) :
+            z=8-z
+            df["-3"][i+mac]=arr[z][1]
+            z=8-z
+            z=z+1
+    z=5
+    for i in range(8) :
+        if(i%2==0) :
+            df["+4"][i+mac]=arr[z][8]
+        if(i%2!=0) :
+            z=8-z
+            df["+4"][i+mac]=arr[z][8]
+            z=8-z
+            z=z+1
+    z=5
+    for i in range(8) :
+        if(i%2==0) :
+            df["-4"][i+mac]=arr[z][0]
+        if(i%2!=0) :
+            z=8-z
+            df["-4"][i+mac]=arr[z][0]
+            z=8-z
+            z=z+1
+
+df.loc[13,['']] = ['overall Transition Count']
+df.loc[14,['+1']] = ['To']
+df.loc[15,['Octant_id']] = ['count']
+df.loc[16,['Octant_id']] = ['+1']
+df.loc[17,['Octant_id']] = ['-1']
+df.loc[18,['Octant_id']] = ['+2']
+df.loc[19,['Octant_id']] = ['-2']
+df.loc[20,['Octant_id']] = ['+3']
+df.loc[21,['Octant_id']] = ['-3']
+df.loc[22,['Octant_id']] = ['+4']
+df.loc[23,['Octant_id']] = ['-4']
+df.loc[15,['+1']] = ['+1']
+df.loc[15,['-1']] = ['-1']
+df.loc[15,['+2']] = ['+2']
+df.loc[15,['-2']] = ['-2']
+df.loc[15,['+3']] = ['+3']
+df.loc[15,['-3']] = ['-3']
+df.loc[15,['+4']] = ['-4']
+df.loc[15,['-4']] = ['+4']
+trans(0,len-1,16)
+#### creating a 9 x 9 matrix to store the values of transition values
+###  [adding 4 to each index +1,-1,+2,-2,+3,-3,+4,-4]
+
+
+ 
+
     
+mod_i = mod
+mac = 27
+i=1
+start = 0
+last = mod_i
+
+while last<= len:
+
+    ### making mod trasition table using while loop as did before
+    df.loc[mac,['']] = ['mod Transition Count']
+    df.loc[mac+1,['Octant_id']] = str(start)+'-'+str(last-1)
+    df.loc[mac+1,['+1']] = ['To']
+    df.loc[mac+2,['Octant_id']] = ['count']
+    df.loc[mac+3,['Octant_id']] = ['+1']
+    df.loc[mac+4,['Octant_id']] = ['-1']
+    df.loc[mac+5,['Octant_id']] = ['+2']
+    df.loc[mac+6,['Octant_id']] = ['-2']
+    df.loc[mac+7,['Octant_id']] = ['+3']
+    df.loc[mac+8,['Octant_id']] = ['-3']
+    df.loc[mac+9,['Octant_id']] = ['+4']
+    df.loc[mac+10,['Octant_id']] = ['-4']
+    df.loc[mac+2,['+1']] = ['+1']
+    df.loc[mac+2,['-1']] = ['-1']
+    df.loc[mac+2,['+2']] = ['+2']
+    df.loc[mac+2,['-2']] = ['-2']
+    df.loc[mac+2,['+3']] = ['+3']
+    df.loc[mac+2,['-3']] = ['-3']
+    df.loc[mac+2,['+4']] = ['-4']
+    df.loc[mac+2,['-4']] = ['+4']  
+    trans(start,last,mac+3)
+
+
+
+    mac = mac + 13
+    start = last
+    i=i+1
+    last = mod_i*i
+
+if last>len:
+    df.loc[mac,['']] = ['mod Transition Count']
+    df.loc[mac+1,['Octant_id']] = str(start)+'-'+str(len-1)
+    df.loc[mac+1,['+1']] = ['To']
+    df.loc[mac+2,['Octant_id']] = ['count']
+    df.loc[mac+3,['Octant_id']] = ['+1']
+    df.loc[mac+4,['Octant_id']] = ['-1']
+    df.loc[mac+5,['Octant_id']] = ['+2']
+    df.loc[mac+6,['Octant_id']] = ['-2']
+    df.loc[mac+7,['Octant_id']] = ['+3']
+    df.loc[mac+8,['Octant_id']] = ['-3']
+    df.loc[mac+9,['Octant_id']] = ['+4']
+    df.loc[mac+10,['Octant_id']] = ['-4']
+    df.loc[mac+2,['+1']] = ['+1']
+    df.loc[mac+2,['-1']] = ['-1']
+    df.loc[mac+2,['+2']] = ['+2']
+    df.loc[mac+2,['-2']] = ['-2']
+    df.loc[mac+2,['+3']] = ['+3']
+    df.loc[mac+2,['-3']] = ['-3']
+    df.loc[mac+2,['+4']] = ['-4']
+    df.loc[mac+2,['-4']] = ['+4']
+    ## using trans function to count trasition count and insrt values into dataframe
+    ##  please ignore warning "setting with copy "
+    trans(start,len,mac+3)
