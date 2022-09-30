@@ -65,3 +65,54 @@ for ele in data['V']:
         print("octant can't be created")
     string+=data.at[row,'octant']
     row=row+1
+    octant=data['octant'].tolist()
+length=row
+dict={'-4':0,'-3':0,'-2':0,'-1':0,'+1':0,'+2':0,'+3':0,'+4':0}
+#subarray
+#ction for longest continuous subarray
+def subarray(n):
+    c=0
+    mx=0
+    for i in range(length):
+        x=data.at[i,'octant']
+        if(x==n):
+            c+=1
+        else:
+            mx=max(mx,c)
+            c=0
+    return mx
+dict['-1']=subarray('-1')
+dict['+1']=subarray('+1')
+dict['-2']=subarray('-2')
+dict['-3']=subarray('-3')
+dict['-4']=subarray('-4')
+dict['+2']=subarray('+2')
+dict['+3']=subarray('+3')
+dict['+4']=subarray('+4')
+
+count_dict={'-4':1,'-3':1,'-2':1,'-1':1,'+1':1,'+2':1,'+3':1,'+4':1}
+
+#using string count the number of longest continuous subarray
+count_dict['-4']=string.count('-4'*dict['-4'])
+count_dict['-3']=string.count('-3'*dict['-3'])
+count_dict['-2']=string.count('-2'*dict['-2'])
+count_dict['-1']=string.count('-1'*dict['-1'])
+count_dict['+1']=string.count('+1'*dict['+1'])
+count_dict['+2']=string.count('+2'*dict['+2'])
+count_dict['+3']=string.count('+3'*dict['+3'])
+count_dict['+4']=string.count('+4'*dict['+4'])
+j=-4
+i=0
+k=""
+#write the count and length in dataframe
+while i<8:
+    if(j>0):k='+'+str(j)
+    else:k=str(j)
+    if(j==0):
+        j+=1
+        continue
+    data.at[i,"Value"]=k
+    data.at[i,"Longest Subsequence Length"]=dict[k]
+    data.at[i,"Count"]=count_dict[k]
+    i+=1
+    j+=1
