@@ -378,3 +378,7 @@ if last>len:
     ## using trans function to count trasition count and insrt values into dataframe
     ##  please ignore warning "setting with copy "
     trans(start,len,mac+3)
+df.to_excel("output_octant_transition_identify.xlsx")
+
+
+##################################### Task 3 complete.
