@@ -111,3 +111,84 @@ df.loc[0,['-4']] = n4 #inserting values in dataframe
 
 #print(df)
 ############################################################ task 1 competed
+#temp = input("enter the value of mod : ")
+
+
+#max_l = 30000
+
+len = len(df) #to store total no. of rows
+i = 1 #loop to calculate mod counts
+begin = 0 #begin with zero
+end = temp #temp variable created
+
+while end<= len: #while loop started
+    df['Octant_id'][i+1] = str(begin) + "-" + str(end-1)
+    p1_1=0 #initialising value
+    n1_1=0 #initialising value
+    p2_1=0 #initialising value
+    n2_1=0 #initialising value
+    p3_1=0 #initialising value
+    n3_1=0 #initialising value
+    p4_1=0 #initialising value
+    n4_1=0 #initialising value  
+    for j in range(begin,end):
+        #counting the values 
+        if df['octant'][j]=="+1":
+            p1_1 = p1_1 +1
+        elif df['octant'][j] == "-1":
+            n1_1 = n1_1 + 1
+        elif df['octant'][j] == "+2":
+            p2_1 = p2_1 + 1
+        elif df['octant'][j] == "-2":
+            n2_1 = n2_1 + 1
+        elif df['octant'][j] == "+3":
+            p3_1 = p3_1 + 1
+        elif df['octant'][j] == "-3":
+            n3_1 = n3_1 + 1
+        elif df['octant'][j] == "+4":
+            p4_1 = p4_1 + 1
+        elif df['octant'][j] == "-4":
+            n4_1 = n4_1 + 1
+    #storing the values in different locations
+    df.loc[i+1,['+1']] = p1_1
+    df.loc[i+1,['-1']] = n1_1
+    df.loc[i+1,['+2']] = p2_1
+    df.loc[i+1,['-2']] = n2_1
+    df.loc[i+1,['+3']] = p3_1
+    df.loc[i+1,['-3']] = n3_1
+    df.loc[i+1,['+4']] = p4_1
+    df.loc[i+1,['-4']] = n4_1
+    begin = end
+    i=i+1
+    end = temp*i
+
+#print(len)
+
+if end>len:
+    df['Octant_id'][i+1] = str(begin) + "-" + str(len-1)
+    p1_2=0 #initialising values
+    n1_2=0 #initialising values
+    p2_2=0 #initialising values
+    n2_2=0 #initialising values
+    p3_2=0 #initialising values
+    n3_2=0 #initialising values
+    p4_2=0 #initialising values
+    n4_2=0 #initialising values
+    for j in range(begin,len):
+        #counting the values
+        if df['octant'][j]=="+1":
+            p1_2 = p1_2 +1
+        elif df['octant'][j] == "-1":
+            n1_2 = n1_2 + 1
+        elif df['octant'][j] == "+2":
+            p2_2 = p2_2 + 1
+        elif df['octant'][j] == "-2":
+            n2_2 = n2_2 + 1
+        elif df['octant'][j] == "+3":
+            p3_2 = p3_2 + 1
+        elif df['octant'][j] == "-3":
+            n3_2 = n3_2 + 1
+        elif df['octant'][j] == "+4":
+            p4_2 = p4_2 + 1
+        elif df['octant'][j] == "-4":
+            n4_2 = n4_2 + 1     
