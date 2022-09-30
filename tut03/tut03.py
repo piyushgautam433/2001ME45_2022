@@ -67,7 +67,7 @@ for ele in data['V']:
     row=row+1
     octant=data['octant'].tolist()
 length=row
-dict={'-4':0,'-3':0,'-2':0,'-1':0,'+1':0,'+2':0,'+3':0,'+4':0}
+dict={'-4':0,'-3':0,'-2':0,'-1':0,'+1':0,'+2':0,'+3':0,'+4':0}  #creating a dictionary in which different values are put
 #subarray
 #ction for longest continuous subarray
 def subarray(n):
@@ -81,14 +81,14 @@ def subarray(n):
             mx=max(mx,c)
             c=0
     return mx
-dict['-1']=subarray('-1')
-dict['+1']=subarray('+1')
-dict['-2']=subarray('-2')
-dict['-3']=subarray('-3')
-dict['-4']=subarray('-4')
-dict['+2']=subarray('+2')
-dict['+3']=subarray('+3')
-dict['+4']=subarray('+4')
+dict['-1']=subarray('-1') # longest subarray of -1
+dict['+1']=subarray('+1') # longest subarray of +1
+dict['-2']=subarray('-2') # longest subarray of -2
+dict['-3']=subarray('-3') # longest subarray of -3
+dict['-4']=subarray('-4') # longest subarray of -4
+dict['+2']=subarray('+2') # longest subarray of +2
+dict['+3']=subarray('+3') # longest subarray of +3
+dict['+4']=subarray('+4') # longest subarray of +4
 
 count_dict={'-4':1,'-3':1,'-2':1,'-1':1,'+1':1,'+2':1,'+3':1,'+4':1}
 
