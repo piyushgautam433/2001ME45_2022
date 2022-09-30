@@ -116,3 +116,4 @@ while i<8:
     data.at[i,"Count"]=count_dict[k]
     i+=1
     j+=1
+    data.to_excel('output_octant_longest_subsequence.xlsx',index=False)
