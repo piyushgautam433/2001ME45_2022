@@ -192,3 +192,17 @@ if end>len:
             p4_2 = p4_2 + 1
         elif df['octant'][j] == "-4":
             n4_2 = n4_2 + 1     
+    #storing values in different locations
+    df.loc[i+1,['+1']] = p1_2
+    df.loc[i+1,['-1']] = n1_2
+    df.loc[i+1,['+2']] = p2_2
+    df.loc[i+1,['-2']] = n2_2
+    df.loc[i+1,['+3']] = p3_2
+    df.loc[i+1,['-3']] = n3_2
+    df.loc[i+1,['+4']] = p4_2
+    df.loc[i+1,['-4']] = n4_2   
+    
+
+
+    ##################################################### task2 completed
+    
