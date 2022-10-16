@@ -14,3 +14,22 @@ try:
        df["W1"] = df["W"]- df["W"].mean() 
 
        
+       #creation of octant column
+       df.loc[((df.U1 > 0) & (df.V1 > 0) & (df.W1 >0)), "Octant"] = "+1" 
+       df.loc[((df.U1 > 0) &(df.V1 > 0) & (df.W1 <0)), "Octant" ] = "-1"
+       df.loc[((df.U1 < 0) &(df.V1 > 0) & (df.W1 >0)), "Octant" ] = "+2"
+       df.loc[((df.U1 < 0) &(df.V1 > 0) & (df.W1 <0)), "Octant" ] = "-2"    
+       df.loc[((df.U1 < 0) &(df.V1 < 0) & (df.W1 >0)), "Octant" ] = "+3"
+       df.loc[((df.U1 < 0) &(df.V1 < 0) & (df.W1 <0)), "Octant" ] = "-3"
+       df.loc[((df.U1 > 0) &(df.V1 < 0) & (df.W1 >0)), "Octant" ] = "+4"
+       df.loc[((df.U1 > 0) &(df.V1 < 0) & (df.W1 <0)), "Octant" ] = "-4"
+       df.loc[0," "]=" "
+       df.loc[0,"  "]="  "
+       df.loc[0,"octant"]="+1"    # creating a column Count for +1
+       df.loc[1,"octant"]="-1"    # creating a column Count for -1
+       df.loc[2,"octant"]="+2"    # creating a column Count for +2
+       df.loc[3,"octant"]="-2"    # creating a column Count for -2
+       df.loc[4,"octant"]="+3"    # creating a column Count for +3
+       df.loc[5,"octant"]="-3"    # creating a column Count for -3
+       df.loc[6,"octant"]="+4"    # creating a column Count for +4
+       df.loc[7,"octant"]="-4"    # creating a column Count for -4
