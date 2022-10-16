@@ -99,7 +99,7 @@ try:
            arr[int(df["Octant"][i])+4]=arr[int(df["Octant"][i])+4]+13 #incrementing count of each value of octant 
            if(i==29744) :
              if arr[int(df["Octant"][i])+4]!=b[int(df["Octant"][i])+4] :
-                begin[int(df["Octant"][i])+4][empty[int(df["Octant"][i])+4]]=0
+                begin[int(df["Octant"][i])+4][empty[int(df["Octant"][i])+4]]=0 #increment
                 continue
            if df["Octant"][i]!=df["Octant"][i+1] : 
                   if arr[int(df["Octant"][i])+4]==(b[int(df["Octant"][i])+4]) :#count of each octant is equal to max of count of each octant
