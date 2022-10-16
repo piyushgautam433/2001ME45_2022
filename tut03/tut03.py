@@ -1,6 +1,6 @@
 # import pandas as pd and csv module
 import pandas as pd #panda is imported
-data = pd.read_excel(r"input_octant_longest_subsequence.xlsx")#input csv file imported
+data = pd.read_excel(r"input_octant_longest_subsequence.xlsx") #input csv file imported
 #print(df)
 #avg of all values in U, V, W
 u_avg=data['U'].mean()
@@ -10,7 +10,7 @@ w_avg=data['W'].mean()
 
 data.at[0,'U_avg']=u_avg #location where avg value is stored
 data.at[0,'V_avg']=v_avg #location where avg value is stored
-data.at[0,'W_avg']=w_avg #location where avg value is stored
+data.at[0,'W_avg']=w_avg #location where avg value is stored 
 row=0
 
 # initializing octant values
@@ -93,14 +93,14 @@ dict['+4']=subarray('+4') # longest subarray of +4
 count_dict={'-4':1,'-3':1,'-2':1,'-1':1,'+1':1,'+2':1,'+3':1,'+4':1}
 
 #using string count the number of longest continuous subarray
-count_dict['-4']=string.count('-4'*dict['-4'])
-count_dict['-3']=string.count('-3'*dict['-3'])
-count_dict['-2']=string.count('-2'*dict['-2'])
-count_dict['-1']=string.count('-1'*dict['-1'])
-count_dict['+1']=string.count('+1'*dict['+1'])
-count_dict['+2']=string.count('+2'*dict['+2'])
-count_dict['+3']=string.count('+3'*dict['+3'])
-count_dict['+4']=string.count('+4'*dict['+4'])
+count_dict['-4']=string.count('-4'*dict['-4']) #string count of -4
+count_dict['-3']=string.count('-3'*dict['-3']) #string count of -3
+count_dict['-2']=string.count('-2'*dict['-2']) #string count of -2
+count_dict['-1']=string.count('-1'*dict['-1']) #string count of -1
+count_dict['+1']=string.count('+1'*dict['+1']) #string count of +1
+count_dict['+2']=string.count('+2'*dict['+2']) #string count of +2
+count_dict['+3']=string.count('+3'*dict['+3']) #string count of +3 
+count_dict['+4']=string.count('+4'*dict['+4']) #string count of +4
 j=-4
 i=0
 k=""
