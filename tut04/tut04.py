@@ -33,3 +33,26 @@ try:
        df.loc[5,"octant"]="-3"    # creating a column Count for -3
        df.loc[6,"octant"]="+4"    # creating a column Count for +4
        df.loc[7,"octant"]="-4"    # creating a column Count for -4
+       a=[]   #creating a array a for counting sequence (+1,+1 -1,-1 ........ +4,+4 -4,-4)
+       for i in range(9) : 
+          a.append(0)    # all elements to 0's in a a[]array 
+       b=[]   # creating b array for storing maximum length of each subsequence for (+1,+1 -1,-1 ........ +4,+4 -4,-4)
+       for i in range(9) : 
+          b.append(0)     # inserting all elements to 0's in a b[]array
+       c=[]    # creating c array for storing count of for maximum length of each subsequence for (+1,+1 -1,-1 ........ +4,+4 -4,-4)
+       for i in range(9) : 
+          c.append(0)  # inserting all elements to 0's in a c[]array
+       mod=29744
+       for i in range(mod) :
+          a[int(df["Octant"][i])+4]=a[int(df["Octant"][i])+4]+1 # incrementing count for each part of subsequene
+          if a[int(df["Octant"][i])+4] != a[int(df["Octant"][i+1])+4]:
+             if(a[int(df["Octant"][i])+4]>b[int(df["Octant"][i])+4]):
+               b[int(df["Octant"][i])+4]=max(a[int(df["Octant"][i])+4],b[int(df["Octant"][i])+4])#finding max length of each subsequence
+               c[int(df["Octant"][i])+4]=1 
+               a[int(df["Octant"][i])+4] =0
+             else :
+               if(a[int(df["Octant"][i])+4]==b[int(df["Octant"][i])+4]):
+                  c[int(df["Octant"][i])+4] += 1 # incrementing count for each subsequence of maximum length
+                  a[int(df["Octant"][i])+4] =0
+               if (a[int(df["Octant"][i])+4]<b[int(df["Octant"][i])+4]):
+                   a[int(df["Octant"][i])+4] =0
