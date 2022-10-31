@@ -37,12 +37,12 @@ try:
 
         try: 
           d=math.ceil(29745/mod) # greatest integer function for identifing 
-          l=0000
+          l=0000   
           m=mod-1
           a=str(l)
           b=str(m)
           for j in range(d) :
-             if int(b)>=29744:
+             if int(b)>=29744:     #octant id
                 df.loc[j+2,"octant id"]= a+"-"+"29744"
                 l=m+1
                 m=m+mod
