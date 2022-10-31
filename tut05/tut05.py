@@ -230,14 +230,14 @@ try:
                     if e[j]==f[i] :
                         g[j]=i+1
                         j=9
-           df.loc[v+2,"rank of +1"]=g[0]                 
-           df.loc[v+2,"rank of -1"]=g[1]                 
-           df.loc[v+2,"rank of +2"]=g[2]
-           df.loc[v+2,"rank of -2"]=g[3]
-           df.loc[v+2,"rank of +3"]=g[4]
-           df.loc[v+2,"rank of -3"]=g[5]
-           df.loc[v+2,"rank of +4"]=g[6]
-           df.loc[v+2,"rank of -4"]=g[7]
+           df.loc[v+2,"rank of +1"]=g[0]     #rank given   
+           df.loc[v+2,"rank of -1"]=g[1]     #rank given   
+           df.loc[v+2,"rank of +2"]=g[2]     #rank given   
+           df.loc[v+2,"rank of -2"]=g[3]     #rank given   
+           df.loc[v+2,"rank of +3"]=g[4]     #rank given   
+           df.loc[v+2,"rank of -3"]=g[5]     #rank given   
+           df.loc[v+2,"rank of +4"]=g[6]     #rank given   
+           df.loc[v+2,"rank of -4"]=g[7]     #rank given   
            w=[]
            c=0
            w.append(df["rank of +1"][0])
