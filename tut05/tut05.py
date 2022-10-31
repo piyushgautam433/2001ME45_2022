@@ -73,7 +73,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="-4" :# counting number of -4 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -87,7 +87,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="+3" :# counting number of +3 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -101,7 +101,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="-3" :# counting number of -3 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -143,7 +143,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="+1" :# counting number of +1 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -399,7 +399,7 @@ try:
                   k=k+1
           df.loc[d+11,"+3"]=k
           k=0
-          for i in range(d) :
+          for i in range(d) : 
               if(h[i]==4)  :
                   k=k+1
           df.loc[d+12,"+3"]=k
