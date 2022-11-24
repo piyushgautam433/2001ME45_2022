@@ -11,7 +11,7 @@ try:
         df["U1"] = df["U"]-df["Uavg"]   # Creating new columns for U1
         df["V2"] = df["V"]-df["Vavg"]   # Creating new columns for V1
         df["W3"] = df["W"]-df["Wavg"]   # Creating new columns for W1
-
+        
         df.loc[((df.U1 > 0) & (df.V2 > 0) & (df.W3 >0)), "Octant"] = "+1"    #creating octant column +1
         df.loc[((df.U1 > 0) &(df.V2 > 0) & (df.W3 <0)), "Octant" ] = "-1"    #creating octant column -1
         df.loc[((df.U1 < 0) &(df.V2 > 0) & (df.W3 >0)), "Octant" ] = "+2"    #creating octant column +2
@@ -37,12 +37,12 @@ try:
 
         try: 
           d=math.ceil(29745/mod) # greatest integer function for identifing 
-          l=0000
+          l=0000   
           m=mod-1
           a=str(l)
           b=str(m)
           for j in range(d) :
-             if int(b)>=29744:
+             if int(b)>=29744:     #octant id
                 df.loc[j+2,"octant id"]= a+"-"+"29744"
                 l=m+1
                 m=m+mod
@@ -54,7 +54,7 @@ try:
                 m=m+mod
                 a=str(l)
                 b=str(m)
-
+          
           c=0 
           t=0
           p=2
@@ -73,7 +73,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="-4" :# counting number of -4 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -87,7 +87,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="+3" :# counting number of +3 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -101,7 +101,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="-3" :# counting number of -3 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -143,7 +143,7 @@ try:
           t=0
           p=2
           for j in range(d) :# no of coloumns in the output for each octant
-              for i in range(mod) :
+              for i in range(mod) : #running at each 5000 iterations (0-5000,5001-10000,......25000-30000)
                   if df["Octant"][t]=="+1" :# counting number of +1 octant in range of 0-30000
                      c =c+1
                   t=t+1
@@ -230,14 +230,14 @@ try:
                     if e[j]==f[i] :
                         g[j]=i+1
                         j=9
-           df.loc[v+2,"rank of +1"]=g[0]                 
-           df.loc[v+2,"rank of -1"]=g[1]                 
-           df.loc[v+2,"rank of +2"]=g[2]
-           df.loc[v+2,"rank of -2"]=g[3]
-           df.loc[v+2,"rank of +3"]=g[4]
-           df.loc[v+2,"rank of -3"]=g[5]
-           df.loc[v+2,"rank of +4"]=g[6]
-           df.loc[v+2,"rank of -4"]=g[7]
+           df.loc[v+2,"rank of +1"]=g[0]     #rank given   
+           df.loc[v+2,"rank of -1"]=g[1]     #rank given   
+           df.loc[v+2,"rank of +2"]=g[2]     #rank given   
+           df.loc[v+2,"rank of -2"]=g[3]     #rank given   
+           df.loc[v+2,"rank of +3"]=g[4]     #rank given   
+           df.loc[v+2,"rank of -3"]=g[5]     #rank given   
+           df.loc[v+2,"rank of +4"]=g[6]     #rank given   
+           df.loc[v+2,"rank of -4"]=g[7]     #rank given   
            w=[]
            c=0
            w.append(df["rank of +1"][0])
@@ -248,7 +248,7 @@ try:
            w.append(df["rank of -3"][0])
            w.append(df["rank of +4"][0])
            w.append(df["rank of -4"][0])
-
+          
            for j in range(8) :
                if w[j]==1 :
                    c=j
@@ -330,7 +330,7 @@ try:
                          c=-4
                          df.loc[i+2,"Rank1 Octant ID"]=c
                          j=8
-
+          
           df.loc[d+5,"+1"]="OCTANT ID"
           k=0
           o=0
@@ -344,7 +344,7 @@ try:
                   o=o-1
                   df.loc[n,"+1"]=o
                   n=n+1
-
+                  
           octant_name_id_mapping = {"1": "Internal outward interaction", "-1": "External outward interaction", "2": "External Ejection",
                                         "-2": "Internal Ejection", "3": "External inward interaction", "-3": "Internal inward interaction", "4": "Internal sweep", "-4": "External sweep"}      
           df.loc[d+5,"-1"]="Octant Name "
@@ -399,7 +399,7 @@ try:
                   k=k+1
           df.loc[d+11,"+3"]=k
           k=0
-          for i in range(d) :
+          for i in range(d) : 
               if(h[i]==4)  :
                   k=k+1
           df.loc[d+12,"+3"]=k
@@ -408,7 +408,7 @@ try:
               if(h[i]==-4)  :
                   k=k+1
           df.loc[d+13,"+3"]=k
-
+        
           df.to_excel('octant_output_ranking_excel.xlsx')
         except:
              print("please enter mod value greater than 0") 
